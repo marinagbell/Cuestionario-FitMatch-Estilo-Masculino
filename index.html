@@ -12,20 +12,21 @@
 
 <style>
   :root{
-    /* Blue palette (equivalente al baddie, pero en azul) */
+    /* Blue + Green shadows (imitando fucsia+morado del otro) */
     --bg:#0b0e14;
     --text:#f2f6ff;
     --muted:#b7c4e6;
     --line:rgba(255,255,255,.12);
 
-    --accent:#2ea6ff;   /* azul vivo */
-    --accent2:#00d4ff;  /* cian */
+    --accent:#2ea6ff;   /* azul */
+    --accent2:#22c55e;  /* verde (sombra/segundo acento) */
     --danger:#ff4d6d;
 
     --shadow: 0 12px 35px rgba(0,0,0,.55);
     --radius:18px;
 
-    --grad: linear-gradient(135deg, rgba(46,166,255,.95), rgba(0,212,255,.80));
+    /* Azul -> Verde (equivalente a fucsia -> morado) */
+    --grad: linear-gradient(135deg, rgba(46,166,255,.95), rgba(34,197,94,.92));
   }
 
   *{ box-sizing:border-box; }
@@ -36,12 +37,12 @@
     color: var(--text);
     font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
-    /* Fondo con puntitos + glows (azules) */
+    /* Fondo con puntitos + glows (azul + verde) */
     background:
       radial-gradient(circle at 1px 1px, rgba(46,166,255,.22) 1px, transparent 1px) 0 0/18px 18px,
       radial-gradient(1100px 550px at 12% 0%, rgba(46,166,255,.18), transparent 60%),
-      radial-gradient(900px 480px at 88% 12%, rgba(0,212,255,.16), transparent 55%),
-      radial-gradient(700px 420px at 60% 95%, rgba(46,166,255,.10), transparent 55%),
+      radial-gradient(900px 480px at 88% 12%, rgba(34,197,94,.16), transparent 55%),
+      radial-gradient(700px 420px at 60% 95%, rgba(34,197,94,.10), transparent 55%),
       linear-gradient(180deg, var(--bg), #070912);
   }
 
@@ -62,7 +63,7 @@
     max-width: 75ch;
   }
 
-  /* Tarjetas: mismo gradiente que el botón + overlay para legibilidad */
+  /* Tarjetas: gradiente + overlay */
   .card{
     background: var(--grad);
     border: 1px solid rgba(255,255,255,.10);
@@ -105,7 +106,7 @@
   }
   .ranking li:hover{
     background: rgba(46,166,255,.12);
-    border-color: rgba(46,166,255,.60);
+    border-color: rgba(34,197,94,.55);
   }
 
   .rank-btns{ display:flex; gap:8px; flex-shrink: 0; }
@@ -119,13 +120,20 @@
     color: var(--text);
     cursor:pointer;
     font-weight: 800;
-    box-shadow: 0 10px 20px rgba(0,0,0,.35);
-    transition: transform .08s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+
+    /* sombra azul+verde (tipo fucsia+morado) */
+    box-shadow:
+      0 12px 28px rgba(46,166,255,.16),
+      0 12px 30px rgba(34,197,94,.12),
+      0 10px 20px rgba(0,0,0,.35);
+
+    transition: transform .08s ease, background .15s ease, border-color .15s ease, opacity .15s ease, filter .15s ease;
     touch-action: manipulation;
   }
   .rank-btns button:hover{
-    background: rgba(0,212,255,.18);
-    border-color: rgba(0,212,255,.75);
+    background: rgba(34,197,94,.14);
+    border-color: rgba(34,197,94,.70);
+    filter: brightness(1.04);
   }
   .rank-btns button:active{ transform: scale(0.97); }
 
@@ -143,8 +151,8 @@
     transition: background .15s ease, border-color .15s ease;
   }
   label:hover{
-    background: rgba(0,212,255,.12);
-    border-color: rgba(0,212,255,.55);
+    background: rgba(46,166,255,.10);
+    border-color: rgba(34,197,94,.55);
   }
 
   input[type="radio"]{
@@ -172,10 +180,19 @@
     cursor:pointer;
     font-weight: 900;
     letter-spacing: .01em;
-    box-shadow: 0 14px 30px rgba(46,166,255,.18);
-    transition: transform .08s ease, opacity .15s ease, filter .15s ease;
+
+    /* sombra azul+verde (tipo fucsia+morado) */
+    box-shadow:
+      0 16px 34px rgba(46,166,255,.18),
+      0 18px 40px rgba(34,197,94,.14);
+
+    transition: transform .08s ease, opacity .15s ease, filter .15s ease, border-color .15s ease;
   }
-  button:hover{ filter: brightness(1.05); opacity: .96; }
+  button:hover{
+    filter: brightness(1.06);
+    opacity: .97;
+    border-color: rgba(34,197,94,.65);
+  }
   button:active{ transform: scale(0.98); }
 
   button.secondary{
@@ -186,7 +203,7 @@
   }
   button.secondary:hover{
     background: rgba(255,255,255,.10);
-    border-color: rgba(46,166,255,.45);
+    border-color: rgba(34,197,94,.45);
     filter:none;
     opacity: 1;
   }
@@ -210,18 +227,18 @@
     display:inline-block;
     padding: 6px 12px;
     border-radius: 999px;
-    border: 1px solid rgba(46,166,255,.45);
+    border: 1px solid rgba(34,197,94,.40);
     margin-left: 8px;
     font-size: 12px;
-    background: rgba(46,166,255,.12);
+    background: rgba(34,197,94,.10);
     color: var(--text);
   }
 
   .top-card{
-    border: 1px solid rgba(46,166,255,.45);
+    border: 1px solid rgba(46,166,255,.35);
     border-radius: 14px;
     padding: 14px 14px;
-    background: rgba(46,166,255,.10);
+    background: rgba(46,166,255,.08);
   }
   .sub-card{
     border: 1px solid var(--line);
@@ -243,10 +260,7 @@
   }
 
   .rec-title{ margin-top: 12px; font-weight: 900; }
-  .rec-list{
-    margin-top: 8px;
-    padding-left: 18px;
-  }
+  .rec-list{ margin-top: 8px; padding-left: 18px; }
   .rec-list li{
     list-style: disc;
     margin: 6px 0;
@@ -415,66 +429,36 @@
  *  Estilos finales + recomendaciones (3 prendas)
  *  ========================= */
 const GROUPS = [
-  {
-    id: "old_money",
-    name: "Old Money / Preppy",
-    desc: "Clásico, pulido y de calidad: chinos, polos, tejidos nobles y tonos neutros.",
-    rec: ["Polo o camisa Oxford", "Pantalón chino recto", "Loafers o náuticos"]
-  },
-  {
-    id: "minimalista",
-    name: "Minimalista",
-    desc: "Limpio y sin ruido: básicos premium, cortes rectos, cero logos y neutros.",
-    rec: ["Camiseta básica de buena caída", "Jeans rectos (straight)", "Zapatilla blanca minimal"]
-  },
-  {
-    id: "smart_casual",
-    name: "Smart Casual",
-    desc: "Arreglado sin ir de traje: camisa/americana relajada con equilibrio y versatilidad.",
-    rec: ["Camisa (blanca o azul)", "Chinos", "Americana ligera"]
-  },
-  {
-    id: "executive",
-    name: "Clásico Ejecutivo",
-    desc: "Formalidad y estructura: traje, sastrería y detalles impecables.",
-    rec: ["Traje azul marino o gris", "Camisa blanca", "Zapato de vestir"]
-  },
-  {
-    id: "streetwear",
-    name: "Streetwear",
-    desc: "Urbano y tendencia: siluetas anchas, sneakers y piezas statement.",
-    rec: ["Sudadera oversize", "Cargo/baggy", "Sneakers chunky/retro"]
-  },
-  {
-    id: "athleisure",
-    name: "Athleisure",
-    desc: "Sporty-lifestyle: comodidad técnica con estética limpia y funcional.",
-    rec: ["Joggers premium", "Chaqueta tipo zip/track", "Sneakers running lifestyle"]
-  },
-  {
-    id: "workwear",
-    name: "Workwear / Heritage",
-    desc: "Durable y con textura: denim/canvas, overshirts, botas worker y vibe heritage.",
-    rec: ["Overshirt de canvas/denim", "Pantalón workwear (canvas)", "Botas worker"]
-  },
-  {
-    id: "techwear",
-    name: "Techwear",
-    desc: "Funcional y técnico: tejidos performance, bolsillos, capas y tonos oscuros.",
-    rec: ["Shell impermeable", "Pantalón técnico (nylon/softshell)", "Sneaker técnica minimal"]
-  },
-  {
-    id: "rock",
-    name: "Rock / Biker",
-    desc: "Negro, cuero y actitud: botas, metal y piezas con presencia.",
-    rec: ["Chaqueta de cuero", "Botas (biker/Chelsea)", "Camiseta negra + denim oscuro"]
-  },
-  {
-    id: "outdoor",
-    name: "Outdoor (Gorpcore)",
-    desc: "Outdoor urbano: capas, forros, chalecos y calzado trail con estética montaña.",
-    rec: ["Forro polar o puffer ligero", "Pantalón outdoor", "Zapatilla trail/hiking"]
-  }
+  { id:"old_money", name:"Old Money / Preppy",
+    desc:"Clásico, pulido y de calidad: chinos, polos, tejidos nobles y tonos neutros.",
+    rec:["Polo o camisa Oxford","Pantalón chino recto","Loafers o náuticos"] },
+  { id:"minimalista", name:"Minimalista",
+    desc:"Limpio y sin ruido: básicos premium, cortes rectos, cero logos y neutros.",
+    rec:["Camiseta básica de buena caída","Jeans rectos (straight)","Zapatilla blanca minimal"] },
+  { id:"smart_casual", name:"Smart Casual",
+    desc:"Arreglado sin ir de traje: camisa/americana relajada con equilibrio y versatilidad.",
+    rec:["Camisa (blanca o azul)","Chinos","Americana ligera"] },
+  { id:"executive", name:"Clásico Ejecutivo",
+    desc:"Formalidad y estructura: traje, sastrería y detalles impecables.",
+    rec:["Traje azul marino o gris","Camisa blanca","Zapato de vestir"] },
+  { id:"streetwear", name:"Streetwear",
+    desc:"Urbano y tendencia: siluetas anchas, sneakers y piezas statement.",
+    rec:["Sudadera oversize","Cargo/baggy","Sneakers chunky/retro"] },
+  { id:"athleisure", name:"Athleisure",
+    desc:"Sporty-lifestyle: comodidad técnica con estética limpia y funcional.",
+    rec:["Joggers premium","Chaqueta tipo zip/track","Sneakers running lifestyle"] },
+  { id:"workwear", name:"Workwear / Heritage",
+    desc:"Durable y con textura: denim/canvas, overshirts, botas worker y vibe heritage.",
+    rec:["Overshirt de canvas/denim","Pantalón workwear (canvas)","Botas worker"] },
+  { id:"techwear", name:"Techwear",
+    desc:"Funcional y técnico: tejidos performance, bolsillos, capas y tonos oscuros.",
+    rec:["Shell impermeable","Pantalón técnico (nylon/softshell)","Sneaker técnica minimal"] },
+  { id:"rock", name:"Rock / Biker",
+    desc:"Negro, cuero y actitud: botas, metal y piezas con presencia.",
+    rec:["Chaqueta de cuero","Botas (biker/Chelsea)","Camiseta negra + denim oscuro"] },
+  { id:"outdoor", name:"Outdoor (Gorpcore)",
+    desc:"Outdoor urbano: capas, forros, chalecos y calzado trail con estética montaña.",
+    rec:["Forro polar o puffer ligero","Pantalón outdoor","Zapatilla trail/hiking"] }
 ];
 
 function zeroScores(){ return Object.fromEntries(GROUPS.map(g => [g.id, 0])); }
@@ -485,9 +469,7 @@ function addPoints(scores, ptsObj){
   }
 }
 
-/** =========================
- *  Ranking móvil: subir/bajar
- *  ========================= */
+/** Ranking móvil: subir/bajar */
 document.querySelectorAll(".ranking").forEach(list => {
   list.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
@@ -506,10 +488,7 @@ document.querySelectorAll(".ranking").forEach(list => {
   });
 });
 
-/** =========================
- *  Puntuaciones (según tu matriz)
- *  Ranking: 1º=3, 2º=2, 3º=1
- *  ========================= */
+/** Puntuaciones */
 const RANKING_Q1 = {
   fit: {
     1: { minimalista: 3, smart_casual: 2 },
@@ -540,11 +519,11 @@ const RANKING_Q1 = {
 
 const SINGLE = {
   q2: {
-    tee_jeans:      { minimalista: 2, smart_casual: 1 },
-    shirt_chinos:   { smart_casual: 2, old_money: 1 },
-    hoodie_cargo:   { streetwear: 2, techwear: 1 },
-    joggers_sport:  { athleisure: 3 },
-    workwear_canvas:{ workwear: 2, outdoor: 1 }
+    tee_jeans:       { minimalista: 2, smart_casual: 1 },
+    shirt_chinos:    { smart_casual: 2, old_money: 1 },
+    hoodie_cargo:    { streetwear: 2, techwear: 1 },
+    joggers_sport:   { athleisure: 3 },
+    workwear_canvas: { workwear: 2, outdoor: 1 }
   },
   q3: {
     light_neutrals: { old_money: 2, smart_casual: 1 },
@@ -561,11 +540,11 @@ const SINGLE = {
     functional_ready: { techwear: 2, outdoor: 1 }
   },
   q5: {
-    loafers:           { old_money: 2 },
-    white_min_sneaker: { minimalista: 2, smart_casual: 1 },
-    chunky_sneaker:    { streetwear: 2 },
-    boots:             { rock: 2, workwear: 1 },
-    trail_shoe:        { outdoor: 3 }
+    loafers:            { old_money: 2 },
+    white_min_sneaker:  { minimalista: 2, smart_casual: 1 },
+    chunky_sneaker:     { streetwear: 2 },
+    boots:              { rock: 2, workwear: 1 },
+    trail_shoe:         { outdoor: 3 }
   },
   q6: {
     blazer:   { executive: 2, smart_casual: 1 },
@@ -575,25 +554,25 @@ const SINGLE = {
     leather:  { rock: 3 }
   },
   q7: {
-    chino:            { smart_casual: 2, old_money: 1 },
-    tailored:         { executive: 3 },
-    straight_jeans:   { minimalista: 2, workwear: 1 },
-    cargo_baggy:      { streetwear: 2, techwear: 1 },
-    tech_outdoor_pant:{ outdoor: 3 }
+    chino:             { smart_casual: 2, old_money: 1 },
+    tailored:          { executive: 3 },
+    straight_jeans:    { minimalista: 2, workwear: 1 },
+    cargo_baggy:       { streetwear: 2, techwear: 1 },
+    tech_outdoor_pant: { outdoor: 3 }
   },
   q8: {
-    full_suit:        { executive: 3 },
-    blazer_chino:     { smart_casual: 2 },
-    elegant_black:    { minimalista: 2, rock: 1 },
-    blazer_sneakers:  { streetwear: 2 },
-    simple_shirt_dark:{ old_money: 1, smart_casual: 1 }
+    full_suit:         { executive: 3 },
+    blazer_chino:      { smart_casual: 2 },
+    elegant_black:     { minimalista: 2, rock: 1 },
+    blazer_sneakers:   { streetwear: 2 },
+    simple_shirt_dark: { old_money: 1, smart_casual: 1 }
   },
   q9: {
-    preppy_weekend:    { old_money: 2 },
-    basic_weekend:     { minimalista: 2 },
-    street_weekend:    { streetwear: 2 },
-    athleisure_weekend:{ athleisure: 3 },
-    outdoor_weekend:   { outdoor: 3 }
+    preppy_weekend:     { old_money: 2 },
+    basic_weekend:      { minimalista: 2 },
+    street_weekend:     { streetwear: 2 },
+    athleisure_weekend: { athleisure: 3 },
+    outdoor_weekend:    { outdoor: 3 }
   },
   q10: {
     no_logos:        { minimalista: 2 },
@@ -626,7 +605,6 @@ function calcScores(){
   }
 
   const scores = zeroScores();
-
   addPoints(scores, scoreRanking(document.querySelector('.ranking[data-question="q1"]'), RANKING_Q1));
 
   for (const q of required){
@@ -637,7 +615,6 @@ function calcScores(){
   return { ok:true, scores };
 }
 
-/** TOP 3 (sin mostrar puntos) */
 function top3Groups(scores){
   const order = GROUPS.map(g => g.id);
   const entries = Object.entries(scores).sort((a,b) => {
