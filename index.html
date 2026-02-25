@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test de Estilo Masculino</title>
+
+<!-- Tipografías -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Blue palette (equivalente al baddie, pero en azul) */
+    --bg:#0b0e14;
+    --text:#f2f6ff;
+    --muted:#b7c4e6;
+    --line:rgba(255,255,255,.12);
+
+    --accent:#2ea6ff;   /* azul vivo */
+    --accent2:#00d4ff;  /* cian */
+    --danger:#ff4d6d;
+
+    --shadow: 0 12px 35px rgba(0,0,0,.55);
+    --radius:18px;
+
+    --grad: linear-gradient(135deg, rgba(46,166,255,.95), rgba(0,212,255,.80));
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    padding: 28px 14px;
+    color: var(--text);
+    font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+    /* Fondo con puntitos + glows (azules) */
+    background:
+      radial-gradient(circle at 1px 1px, rgba(46,166,255,.22) 1px, transparent 1px) 0 0/18px 18px,
+      radial-gradient(1100px 550px at 12% 0%, rgba(46,166,255,.18), transparent 60%),
+      radial-gradient(900px 480px at 88% 12%, rgba(0,212,255,.16), transparent 55%),
+      radial-gradient(700px 420px at 60% 95%, rgba(46,166,255,.10), transparent 55%),
+      linear-gradient(180deg, var(--bg), #070912);
+  }
+
+  .container{ max-width: 980px; margin: 0 auto; }
+
+  h1{
+    font-family: "Playfair Display", ui-serif, Georgia, serif;
+    font-size: clamp(30px, 3.6vw, 44px);
+    letter-spacing: -0.02em;
+    margin: 8px 0 6px;
+    line-height: 1.05;
+  }
+
+  .muted{
+    color: var(--muted);
+    margin: 0 0 18px;
+    line-height: 1.55;
+    max-width: 75ch;
+  }
+
+  /* Tarjetas: mismo gradiente que el botón + overlay para legibilidad */
+  .card{
+    background: var(--grad);
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin: 14px 0;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(9,12,18,.78);
+    pointer-events:none;
+  }
+  .card > *{ position: relative; z-index: 1; }
+
+  h2{
+    margin: 0 0 12px;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  ul{ list-style:none; padding:0; margin:0; }
+
+  /* Ranking list */
+  .ranking li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding: 12px 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.06);
+    margin: 10px 0;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .ranking li:hover{
+    background: rgba(46,166,255,.12);
+    border-color: rgba(46,166,255,.60);
+  }
+
+  .rank-btns{ display:flex; gap:8px; flex-shrink: 0; }
+
+  .rank-btns button{
+    width: 40px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(46,166,255,.60);
+    background: rgba(46,166,255,.16);
+    color: var(--text);
+    cursor:pointer;
+    font-weight: 800;
+    box-shadow: 0 10px 20px rgba(0,0,0,.35);
+    transition: transform .08s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+    touch-action: manipulation;
+  }
+  .rank-btns button:hover{
+    background: rgba(0,212,255,.18);
+    border-color: rgba(0,212,255,.75);
+  }
+  .rank-btns button:active{ transform: scale(0.97); }
+
+  /* Opciones radio */
+  label{
+    display:flex;
+    align-items:flex-start;
+    gap: 10px;
+    padding: 12px 12px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.06);
+    margin: 10px 0;
+    cursor:pointer;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  label:hover{
+    background: rgba(0,212,255,.12);
+    border-color: rgba(0,212,255,.55);
+  }
+
+  input[type="radio"]{
+    transform: translateY(2px);
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+  }
+
+  /* Actions */
+  .actions{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items:center;
+    margin-top: 10px;
+  }
+
+  button{
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(46,166,255,.70);
+    background: var(--grad);
+    color: #071018;
+    cursor:pointer;
+    font-weight: 900;
+    letter-spacing: .01em;
+    box-shadow: 0 14px 30px rgba(46,166,255,.18);
+    transition: transform .08s ease, opacity .15s ease, filter .15s ease;
+  }
+  button:hover{ filter: brightness(1.05); opacity: .96; }
+  button:active{ transform: scale(0.98); }
+
+  button.secondary{
+    background: rgba(255,255,255,.06);
+    color: var(--text);
+    border-color: rgba(255,255,255,.16);
+    box-shadow: none;
+  }
+  button.secondary:hover{
+    background: rgba(255,255,255,.10);
+    border-color: rgba(46,166,255,.45);
+    filter:none;
+    opacity: 1;
+  }
+
+  .error{
+    color: var(--danger);
+    font-weight: 900;
+    margin-left: 4px;
+  }
+
+  /* Result */
+  .result{
+    margin-top: 16px;
+    border-left: 6px solid var(--accent);
+    background: rgba(0,0,0,.20);
+    border-radius: 14px;
+    padding: 14px 14px 14px 18px;
+  }
+
+  .badge{
+    display:inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(46,166,255,.45);
+    margin-left: 8px;
+    font-size: 12px;
+    background: rgba(46,166,255,.12);
+    color: var(--text);
+  }
+
+  .top-card{
+    border: 1px solid rgba(46,166,255,.45);
+    border-radius: 14px;
+    padding: 14px 14px;
+    background: rgba(46,166,255,.10);
+  }
+  .sub-card{
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,.06);
+    margin-top: 10px;
+  }
+  .top-title{
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+  .sub-title{ font-weight: 900; }
+  .desc{
+    margin-top: 8px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .rec-title{ margin-top: 12px; font-weight: 900; }
+  .rec-list{
+    margin-top: 8px;
+    padding-left: 18px;
+  }
+  .rec-list li{
+    list-style: disc;
+    margin: 6px 0;
+    color: var(--muted);
+  }
+
+  @media (max-width: 520px){
+    .ranking li{ padding: 10px; }
+    .rank-btns button{ width: 38px; height: 34px; }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>Test de Estilo Masculino</h1>
+  <p class="muted">Responde 10 preguntas. En la de ranking usa ▲ y ▼ para ordenar. Al final se muestran tus 3 estilos más probables y 3 prendas recomendadas para tu estilo nº1.</p>
+
+  <form id="quiz">
+
+    <!-- 1 (Ranking) -->
+    <div class="card">
+      <h2>1. ¿Qué te importa más al vestirte? (ordena por importancia)</h2>
+      <ul class="ranking" data-question="q1">
+        <li data-item="fit">
+          <span>Ajuste / fit (cómo te queda)</span>
+          <span class="rank-btns">
+            <button type="button" class="up" aria-label="Subir Ajuste/fit">▲</button>
+            <button type="button" class="down" aria-label="Bajar Ajuste/fit">▼</button>
+          </span>
+        </li>
+        <li data-item="comodidad">
+          <span>Comodidad</span>
+          <span class="rank-btns">
+            <button type="button" class="up" aria-label="Subir Comodidad">▲</button>
+            <button type="button" class="down" aria-label="Bajar Comodidad">▼</button>
+          </span>
+        </li>
+        <li data-item="calidad">
+          <span>Calidad / materiales</span>
+          <span class="rank-btns">
+            <button type="button" class="up" aria-label="Subir Calidad/materiales">▲</button>
+            <button type="button" class="down" aria-label="Bajar Calidad/materiales">▼</button>
+          </span>
+        </li>
+        <li data-item="tendencia">
+          <span>Tendencia / estética</span>
+          <span class="rank-btns">
+            <button type="button" class="up" aria-label="Subir Tendencia/estética">▲</button>
+            <button type="button" class="down" aria-label="Bajar Tendencia/estética">▼</button>
+          </span>
+        </li>
+        <li data-item="funcionalidad">
+          <span>Funcionalidad (bolsillos, clima, resistencia)</span>
+          <span class="rank-btns">
+            <button type="button" class="up" aria-label="Subir Funcionalidad">▲</button>
+            <button type="button" class="down" aria-label="Bajar Funcionalidad">▼</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <h2>2. ¿Qué prendas usas más a diario?</h2>
+      <label><input type="radio" name="q2" value="tee_jeans"> Camiseta + vaqueros</label>
+      <label><input type="radio" name="q2" value="shirt_chinos"> Camisa + chinos</label>
+      <label><input type="radio" name="q2" value="hoodie_cargo"> Sudadera + pantalón ancho/cargo</label>
+      <label><input type="radio" name="q2" value="joggers_sport"> Joggers + prenda deportiva</label>
+      <label><input type="radio" name="q2" value="workwear_canvas"> Workwear: denim/canvas (overshirt, pantalón workwear)</label>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <h2>3. Tu paleta típica de colores es…</h2>
+      <label><input type="radio" name="q3" value="light_neutrals"> Neutros claros (beige, crema, arena, azul marino suave)</label>
+      <label><input type="radio" name="q3" value="dark_neutrals"> Neutros oscuros (negro, gris, carbón)</label>
+      <label><input type="radio" name="q3" value="earth_tones"> Colores apagados “tierra” (oliva, marrón, teja)</label>
+      <label><input type="radio" name="q3" value="bold_colors"> Colores vivos / contrastes fuertes</label>
+      <label><input type="radio" name="q3" value="full_black"> Full black casi siempre</label>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <h2>4. Para ti, “ir bien vestido” es…</h2>
+      <label><input type="radio" name="q4" value="classic_polished"> Verse clásico y “pulido”</label>
+      <label><input type="radio" name="q4" value="clean_simple"> Verse simple y limpio (sin logos)</label>
+      <label><input type="radio" name="q4" value="modern_trendy"> Verse moderno y con tendencia</label>
+      <label><input type="radio" name="q4" value="sporty_comfy"> Verse cómodo y sporty</label>
+      <label><input type="radio" name="q4" value="functional_ready"> Verse funcional/ready (clima, bolsillos, capas)</label>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <h2>5. ¿Qué calzado eliges la mayoría de días?</h2>
+      <label><input type="radio" name="q5" value="loafers"> Loafers / náuticos</label>
+      <label><input type="radio" name="q5" value="white_min_sneaker"> Zapatilla blanca minimal</label>
+      <label><input type="radio" name="q5" value="chunky_sneaker"> Sneakers chunky / retro / hype</label>
+      <label><input type="radio" name="q5" value="boots"> Botas (Chelsea, worker, biker)</label>
+      <label><input type="radio" name="q5" value="trail_shoe"> Zapatilla trail / hiking</label>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <h2>6. Elige tu “prenda estrella”</h2>
+      <label><input type="radio" name="q6" value="blazer"> Blazer / americana</label>
+      <label><input type="radio" name="q6" value="overshirt"> Sobrecamisa (overshirt) / chaqueta worker</label>
+      <label><input type="radio" name="q6" value="bomber"> Bomber / cazadora urbana</label>
+      <label><input type="radio" name="q6" value="shell"> Chaqueta técnica / shell impermeable</label>
+      <label><input type="radio" name="q6" value="leather"> Chaqueta de cuero</label>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <h2>7. ¿Qué pantalón te representa más?</h2>
+      <label><input type="radio" name="q7" value="chino"> Chino recto</label>
+      <label><input type="radio" name="q7" value="tailored"> Pantalón sastre (pinzas/vestir)</label>
+      <label><input type="radio" name="q7" value="straight_jeans"> Vaquero recto (straight)</label>
+      <label><input type="radio" name="q7" value="cargo_baggy"> Cargo / baggy</label>
+      <label><input type="radio" name="q7" value="tech_outdoor_pant"> Técnico (nylon/softshell) o de montaña</label>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <h2>8. Outfit para un evento formal</h2>
+      <label><input type="radio" name="q8" value="full_suit"> Traje completo + zapatos de vestir</label>
+      <label><input type="radio" name="q8" value="blazer_chino"> Americana + pantalón chino (sin corbata)</label>
+      <label><input type="radio" name="q8" value="elegant_black"> Total black “minimal elegante”</label>
+      <label><input type="radio" name="q8" value="blazer_sneakers"> Conjunto elegante pero urbano (blazer + sneakers)</label>
+      <label><input type="radio" name="q8" value="simple_shirt_dark"> Camisa + pantalón oscuro</label>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <h2>9. Look para fin de semana</h2>
+      <label><input type="radio" name="q9" value="preppy_weekend"> Polo/suéter + chino + loafer (preppy)</label>
+      <label><input type="radio" name="q9" value="basic_weekend"> Tee básica + jean + zapatilla blanca</label>
+      <label><input type="radio" name="q9" value="street_weekend"> Sudadera + cargo + sneakers</label>
+      <label><input type="radio" name="q9" value="athleisure_weekend"> Conjunto deportivo completo (athleisure)</label>
+      <label><input type="radio" name="q9" value="outdoor_weekend"> Capas outdoor (forro, chaleco, trail)</label>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+      <h2>10. ¿Qué detalle te define más?</h2>
+      <label><input type="radio" name="q10" value="no_logos"> Prendas sin logos y bien combinadas</label>
+      <label><input type="radio" name="q10" value="class_accessory"> Un accesorio “clase” (reloj, cinturón de piel)</label>
+      <label><input type="radio" name="q10" value="tech_details"> Piezas técnicas (tejidos, cremalleras, bolsillos)</label>
+      <label><input type="radio" name="q10" value="rock_details"> Cuero/negro/metal (actitud)</label>
+      <label><input type="radio" name="q10" value="heritage_denim"> Denim/heritage (costuras, textura, durabilidad)</label>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="btnResult">Ver resultado</button>
+      <button type="button" class="secondary" id="btnReset">Reiniciar</button>
+      <span id="msg" class="error" aria-live="polite"></span>
+    </div>
+
+    <div class="result" id="resultado" style="display:none;"></div>
+
+  </form>
+
+<script>
+/** =========================
+ *  Estilos finales + recomendaciones (3 prendas)
+ *  ========================= */
+const GROUPS = [
+  {
+    id: "old_money",
+    name: "Old Money / Preppy",
+    desc: "Clásico, pulido y de calidad: chinos, polos, tejidos nobles y tonos neutros.",
+    rec: ["Polo o camisa Oxford", "Pantalón chino recto", "Loafers o náuticos"]
+  },
+  {
+    id: "minimalista",
+    name: "Minimalista",
+    desc: "Limpio y sin ruido: básicos premium, cortes rectos, cero logos y neutros.",
+    rec: ["Camiseta básica de buena caída", "Jeans rectos (straight)", "Zapatilla blanca minimal"]
+  },
+  {
+    id: "smart_casual",
+    name: "Smart Casual",
+    desc: "Arreglado sin ir de traje: camisa/americana relajada con equilibrio y versatilidad.",
+    rec: ["Camisa (blanca o azul)", "Chinos", "Americana ligera"]
+  },
+  {
+    id: "executive",
+    name: "Clásico Ejecutivo",
+    desc: "Formalidad y estructura: traje, sastrería y detalles impecables.",
+    rec: ["Traje azul marino o gris", "Camisa blanca", "Zapato de vestir"]
+  },
+  {
+    id: "streetwear",
+    name: "Streetwear",
+    desc: "Urbano y tendencia: siluetas anchas, sneakers y piezas statement.",
+    rec: ["Sudadera oversize", "Cargo/baggy", "Sneakers chunky/retro"]
+  },
+  {
+    id: "athleisure",
+    name: "Athleisure",
+    desc: "Sporty-lifestyle: comodidad técnica con estética limpia y funcional.",
+    rec: ["Joggers premium", "Chaqueta tipo zip/track", "Sneakers running lifestyle"]
+  },
+  {
+    id: "workwear",
+    name: "Workwear / Heritage",
+    desc: "Durable y con textura: denim/canvas, overshirts, botas worker y vibe heritage.",
+    rec: ["Overshirt de canvas/denim", "Pantalón workwear (canvas)", "Botas worker"]
+  },
+  {
+    id: "techwear",
+    name: "Techwear",
+    desc: "Funcional y técnico: tejidos performance, bolsillos, capas y tonos oscuros.",
+    rec: ["Shell impermeable", "Pantalón técnico (nylon/softshell)", "Sneaker técnica minimal"]
+  },
+  {
+    id: "rock",
+    name: "Rock / Biker",
+    desc: "Negro, cuero y actitud: botas, metal y piezas con presencia.",
+    rec: ["Chaqueta de cuero", "Botas (biker/Chelsea)", "Camiseta negra + denim oscuro"]
+  },
+  {
+    id: "outdoor",
+    name: "Outdoor (Gorpcore)",
+    desc: "Outdoor urbano: capas, forros, chalecos y calzado trail con estética montaña.",
+    rec: ["Forro polar o puffer ligero", "Pantalón outdoor", "Zapatilla trail/hiking"]
+  }
+];
+
+function zeroScores(){ return Object.fromEntries(GROUPS.map(g => [g.id, 0])); }
+function addPoints(scores, ptsObj){
+  for (const [gid, pts] of Object.entries(ptsObj || {})){
+    if (scores[gid] === undefined) continue;
+    scores[gid] += (pts ?? 0);
+  }
+}
+
+/** =========================
+ *  Ranking móvil: subir/bajar
+ *  ========================= */
+document.querySelectorAll(".ranking").forEach(list => {
+  list.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn) return;
+    const li = e.target.closest("li");
+    if (!li) return;
+
+    if (btn.classList.contains("up")){
+      const prev = li.previousElementSibling;
+      if (prev) list.insertBefore(li, prev);
+    }
+    if (btn.classList.contains("down")){
+      const next = li.nextElementSibling;
+      if (next) list.insertBefore(next, li);
+    }
+  });
+});
+
+/** =========================
+ *  Puntuaciones (según tu matriz)
+ *  Ranking: 1º=3, 2º=2, 3º=1
+ *  ========================= */
+const RANKING_Q1 = {
+  fit: {
+    1: { minimalista: 3, smart_casual: 2 },
+    2: { minimalista: 2 },
+    3: { smart_casual: 1 }
+  },
+  comodidad: {
+    1: { athleisure: 3, outdoor: 2 },
+    2: { athleisure: 2 },
+    3: { outdoor: 1 }
+  },
+  calidad: {
+    1: { old_money: 3, executive: 2 },
+    2: { old_money: 2 },
+    3: { executive: 1 }
+  },
+  tendencia: {
+    1: { streetwear: 3, rock: 2 },
+    2: { streetwear: 2 },
+    3: { rock: 1 }
+  },
+  funcionalidad: {
+    1: { techwear: 3, outdoor: 2 },
+    2: { techwear: 2 },
+    3: { outdoor: 1 }
+  }
+};
+
+const SINGLE = {
+  q2: {
+    tee_jeans:      { minimalista: 2, smart_casual: 1 },
+    shirt_chinos:   { smart_casual: 2, old_money: 1 },
+    hoodie_cargo:   { streetwear: 2, techwear: 1 },
+    joggers_sport:  { athleisure: 3 },
+    workwear_canvas:{ workwear: 2, outdoor: 1 }
+  },
+  q3: {
+    light_neutrals: { old_money: 2, smart_casual: 1 },
+    dark_neutrals:  { minimalista: 2, techwear: 1 },
+    earth_tones:    { outdoor: 2, workwear: 1 },
+    bold_colors:    { streetwear: 2, rock: 1 },
+    full_black:     { rock: 3, techwear: 1 }
+  },
+  q4: {
+    classic_polished: { old_money: 2, executive: 1 },
+    clean_simple:     { minimalista: 2 },
+    modern_trendy:    { streetwear: 2, techwear: 1 },
+    sporty_comfy:     { athleisure: 3 },
+    functional_ready: { techwear: 2, outdoor: 1 }
+  },
+  q5: {
+    loafers:           { old_money: 2 },
+    white_min_sneaker: { minimalista: 2, smart_casual: 1 },
+    chunky_sneaker:    { streetwear: 2 },
+    boots:             { rock: 2, workwear: 1 },
+    trail_shoe:        { outdoor: 3 }
+  },
+  q6: {
+    blazer:   { executive: 2, smart_casual: 1 },
+    overshirt:{ workwear: 2 },
+    bomber:   { streetwear: 2 },
+    shell:    { techwear: 3 },
+    leather:  { rock: 3 }
+  },
+  q7: {
+    chino:            { smart_casual: 2, old_money: 1 },
+    tailored:         { executive: 3 },
+    straight_jeans:   { minimalista: 2, workwear: 1 },
+    cargo_baggy:      { streetwear: 2, techwear: 1 },
+    tech_outdoor_pant:{ outdoor: 3 }
+  },
+  q8: {
+    full_suit:        { executive: 3 },
+    blazer_chino:     { smart_casual: 2 },
+    elegant_black:    { minimalista: 2, rock: 1 },
+    blazer_sneakers:  { streetwear: 2 },
+    simple_shirt_dark:{ old_money: 1, smart_casual: 1 }
+  },
+  q9: {
+    preppy_weekend:    { old_money: 2 },
+    basic_weekend:     { minimalista: 2 },
+    street_weekend:    { streetwear: 2 },
+    athleisure_weekend:{ athleisure: 3 },
+    outdoor_weekend:   { outdoor: 3 }
+  },
+  q10: {
+    no_logos:        { minimalista: 2 },
+    class_accessory: { old_money: 2 },
+    tech_details:    { techwear: 3 },
+    rock_details:    { rock: 3 },
+    heritage_denim:  { workwear: 2, outdoor: 1 }
+  }
+};
+
+function scoreRanking(listEl, mapping){
+  const partial = {};
+  const items = [...listEl.querySelectorAll("li")];
+  items.forEach((li, idx) => {
+    const pos = idx + 1;
+    const key = li.dataset.item;
+    const pts = (mapping[key] && mapping[key][pos]) ? mapping[key][pos] : null;
+    if (pts) addPoints(partial, pts);
+  });
+  return partial;
+}
+
+function calcScores(){
+  const form = document.getElementById("quiz");
+  const required = ["q2","q3","q4","q5","q6","q7","q8","q9","q10"];
+  for (const q of required){
+    if (!form.querySelector(`input[name="${q}"]:checked`)){
+      return { ok:false, error:"Te falta responder alguna pregunta." };
+    }
+  }
+
+  const scores = zeroScores();
+
+  addPoints(scores, scoreRanking(document.querySelector('.ranking[data-question="q1"]'), RANKING_Q1));
+
+  for (const q of required){
+    const chosen = form.querySelector(`input[name="${q}"]:checked`);
+    addPoints(scores, SINGLE[q][chosen.value]);
+  }
+
+  return { ok:true, scores };
+}
+
+/** TOP 3 (sin mostrar puntos) */
+function top3Groups(scores){
+  const order = GROUPS.map(g => g.id);
+  const entries = Object.entries(scores).sort((a,b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    return order.indexOf(a[0]) - order.indexOf(b[0]);
+  });
+  return entries.slice(0,3).map(([gid]) => GROUPS.find(g => g.id === gid));
+}
+
+function showResult(){
+  const out = document.getElementById("resultado");
+  const msgEl = document.getElementById("msg");
+  msgEl.textContent = "";
+
+  const res = calcScores();
+  if (!res.ok){
+    msgEl.textContent = res.error;
+    out.style.display = "none";
+    return;
+  }
+
+  const top3 = top3Groups(res.scores);
+  const winner = top3[0];
+  const recItems = (winner.rec || []).map(x => `<li>${x}</li>`).join("");
+
+  out.innerHTML = `
+    <div class="top-title">Tus 3 estilos más probables</div>
+
+    <div class="top-card" style="margin-top:12px;">
+      <div class="sub-title">1º <span class="badge">${winner.name}</span></div>
+      <div class="desc">${winner.desc}</div>
+
+      <div class="rec-title">3 prendas recomendadas</div>
+      <ul class="rec-list">${recItems}</ul>
+    </div>
+
+    <div class="sub-card">
+      <div class="sub-title">2º <span class="badge">${top3[1].name}</span></div>
+      <div class="desc">${top3[1].desc}</div>
+    </div>
+
+    <div class="sub-card">
+      <div class="sub-title">3º <span class="badge">${top3[2].name}</span></div>
+      <div class="desc">${top3[2].desc}</div>
+    </div>
+  `;
+
+  out.style.display = "block";
+  out.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+function resetQuiz(){
+  document.getElementById("msg").textContent = "";
+  const out = document.getElementById("resultado");
+  out.style.display = "none";
+  document.getElementById("quiz").reset();
+}
+
+document.getElementById("btnResult").addEventListener("click", showResult);
+document.getElementById("btnReset").addEventListener("click", resetQuiz);
+</script>
+
+</div>
+</body>
+</html>
