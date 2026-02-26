@@ -297,11 +297,33 @@
 }
 
 .sig-text{ color: var(--muted); }
+.logo-wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 10px 0 24px;
+}
+
+.logo{
+  width: 100%;
+  max-width: 420px;   /* tamaño serio y elegante */
+  height: auto;
+  opacity: .95;
+
+  /* Sombra profesional azul + verde muy sutil */
+  filter:
+    drop-shadow(0 12px 30px rgba(46,166,255,.15))
+    drop-shadow(0 18px 40px rgba(34,197,94,.12));
+}
 </style>
 </head>
 
 <body>
 <div class="container">
+
+  <div class="logo-wrapper">
+  <img src="logo.jpg" alt="FitMatch Logo" class="logo">
+</div>
 
   <h1>Test de Estilo Masculino</h1>
   <p class="muted">Responde 10 preguntas. En la de ranking usa ▲ y ▼ para ordenar. Al final se muestran tus 3 estilos más probables y 3 prendas recomendadas para tu estilo nº1.</p>
@@ -712,6 +734,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 </div>
 </body>
 </html>
+
 
 
 
